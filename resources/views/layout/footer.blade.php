@@ -38,7 +38,7 @@
         </div>
         <hr class="footer-divider">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 footer-copy">
-            <span>© 2024 Alma Balabaqshasy. Все права защищены.</span>
+            <span>© 2026 Alma Balabaqshasy. Все права защищены.</span>
             <div class="d-flex gap-3">
                 <a href="#">Политика конфиденциальности</a>
                 <a href="#">Лицензия</a>
