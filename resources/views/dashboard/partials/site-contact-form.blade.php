@@ -88,7 +88,7 @@
 
 @include('dashboard.partials.gallery-manager', ['galleryItems' => $galleryItems])
 
-@include('dashboard.partials.documents-manager', ['siteDocuments' => $siteDocuments])
+{{--@include('dashboard.partials.documents-manager', ['siteDocuments' => $siteDocuments])--}}
 
 {{-- Блок контактов — после документов --}}
 <div class="card shadow-sm mb-3" id="panel-contacts">

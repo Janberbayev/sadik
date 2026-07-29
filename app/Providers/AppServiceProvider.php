@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SiteContact;
 use App\Models\SiteDocument;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,13 @@ class AppServiceProvider extends ServiceProvider
                     ->get(['id', 'title', 'link_root', 'path'])
                     ->unique('title')
                     ->values()
+            );
+        });
+
+        View::composer('layout.footer', function ($view) {
+            $view->with(
+                'footerContacts',
+                SiteContact::forPublicPage(SiteContact::current())
             );
         });
     }

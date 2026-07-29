@@ -2,6 +2,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ __('site_meta_title') }}</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('favicon-32x32.png') }}" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -723,17 +727,8 @@
         footer {
             background: var(--dark);
             color: rgba(255,255,255,0.7);
-            padding: 50px 0 30px;
+            padding: 56px 0 28px;
         }
-        footer .footer-brand {
-            font-family: 'Baloo 2', cursive;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #fff;
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 10px;
-        }
-        footer .footer-brand .sun { background: var(--sun); }
         footer .footer-alma-logo {
             margin-bottom: 4px;
         }
@@ -747,11 +742,61 @@
         footer .footer-alma-logo .logo-sub {
             font-size: 0.62rem;
         }
-        footer h6 { font-weight: 800; color: #fff; font-size: 0.85rem; margin-bottom: 12px; letter-spacing: .05em; text-transform: uppercase; }
-        footer a  { color: rgba(255,255,255,.6); text-decoration: none; font-size: 0.88rem; display: block; margin-bottom: 6px; transition: color .2s; }
-        footer a:hover { color: var(--sun); }
-        .footer-divider { border-color: rgba(255,255,255,.12); margin: 30px 0 20px; }
-        .footer-copy { font-size: 0.82rem; }
+        footer .footer-desc {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            max-width: 280px;
+            margin: 14px 0 0;
+            color: rgba(255,255,255,0.62);
+        }
+        footer h6 {
+            font-weight: 800;
+            color: #fff;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+        footer .footer-nav a,
+        footer .footer-contact a {
+            color: rgba(255,255,255,.62);
+            text-decoration: none;
+            font-size: 0.88rem;
+            display: block;
+            margin-bottom: 8px;
+            transition: color .2s;
+        }
+        footer .footer-nav a:hover,
+        footer .footer-contact a:hover {
+            color: var(--sun);
+        }
+        footer .footer-contact-line {
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin: 0 0 8px;
+            color: rgba(255,255,255,.62);
+        }
+        footer .footer-hours {
+            margin-top: 4px;
+        }
+        .footer-divider {
+            border: 0;
+            border-top: 1px solid rgba(255,255,255,.12);
+            margin: 32px 0 18px;
+            opacity: 1;
+        }
+        .footer-copy {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,.45);
+        }
+        @media (max-width: 767.98px) {
+            footer {
+                padding: 44px 0 24px;
+            }
+            footer .footer-desc {
+                max-width: none;
+            }
+        }
 
         /* Wobble on hover for emoji */
         .wobble:hover { animation: wobble .4s ease; }
