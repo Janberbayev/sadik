@@ -44,6 +44,7 @@
             </ul>
         @endif
 
+        @auth
         <div class="rounded-4 p-3 p-md-4 mt-4" style="background: #fff; border: 2px solid var(--card-border);">
             <h2 class="h6 fw-bold mb-3" style="color: var(--dark);">{{ __('documents_add_title') }}</h2>
             <form method="post" action="{{ locale_route('documents.titles.store') }}" class="d-flex flex-column flex-sm-row gap-2 align-items-sm-start">
@@ -63,6 +64,7 @@
                 </button>
             </form>
         </div>
+        @endauth
 
         <p class="mt-4 mb-0">
             <a href="{{ locale_route('home') }}#top" class="btn-outline-dark-pill d-inline-block" style="text-decoration: none;">{{ __('documents_back_home') }}</a>

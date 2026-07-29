@@ -734,6 +734,19 @@
             margin-bottom: 10px;
         }
         footer .footer-brand .sun { background: var(--sun); }
+        footer .footer-alma-logo {
+            margin-bottom: 4px;
+        }
+        footer .footer-alma-logo .alma-logo-canvas-wrap {
+            width: 48px;
+            height: 48px;
+        }
+        footer .footer-alma-logo .logo-main {
+            font-size: 1.25rem;
+        }
+        footer .footer-alma-logo .logo-sub {
+            font-size: 0.62rem;
+        }
         footer h6 { font-weight: 800; color: #fff; font-size: 0.85rem; margin-bottom: 12px; letter-spacing: .05em; text-transform: uppercase; }
         footer a  { color: rgba(255,255,255,.6); text-decoration: none; font-size: 0.88rem; display: block; margin-bottom: 6px; transition: color .2s; }
         footer a:hover { color: var(--sun); }

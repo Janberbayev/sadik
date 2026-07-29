@@ -2,7 +2,7 @@
     <div class="container alma-navbar-wrap">
         <a class="alma-logo-wrap" href="{{ locale_route('home') }}#top">
             <div class="alma-logo-canvas-wrap">
-                <canvas id="almaLogoCanvas" width="120" height="120"></canvas>
+                <canvas class="alma-logo-canvas" width="120" height="120"></canvas>
             </div>
             <div class="alma-logo-text">
                 <span class="logo-main">ALMA</span>
