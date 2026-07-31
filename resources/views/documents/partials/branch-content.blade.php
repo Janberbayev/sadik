@@ -56,10 +56,11 @@
     </div>
 @endif
 
+@auth
 <div class="row g-3 mb-4">
     <div class="col-12 col-lg-6">
         <div class="rounded-4 p-3 p-md-4 h-100" style="background: #fff; border: 2px solid var(--card-border);">
-            <h2 class="h6 fw-bold mb-3" style="color: var(--dark);">{{ __('documents_add_folder') }}</h2>
+            <h2 class="h6 fw-bold mb-3" style="font-family: 'Nunito', sans-serif; color: var(--dark);">{{ __('documents_add_folder') }}</h2>
             <form method="post" action="{{ locale_route('documents.folders.store', ['site_document' => $document]) }}" class="d-flex flex-column gap-2">
                 @csrf
                 <div>
@@ -81,7 +82,7 @@
 
     <div class="col-12 col-lg-6">
         <div class="rounded-4 p-3 p-md-4 h-100" style="background: #fff; border: 2px solid var(--card-border);">
-            <h2 class="h6 fw-bold mb-3" style="color: var(--dark);">{{ __('documents_save_file') }}</h2>
+            <h2 class="h6 fw-bold mb-3" style="font-family: 'Nunito', sans-serif; color: var(--dark);">{{ __('documents_save_file') }}</h2>
             <form method="post" action="{{ locale_route('documents.file.store', ['site_document' => $document]) }}" enctype="multipart/form-data" class="d-flex flex-column gap-2">
                 @csrf
                 <div>
@@ -110,3 +111,4 @@
         </div>
     </div>
 </div>
+@endauth
