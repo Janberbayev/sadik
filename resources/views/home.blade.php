@@ -305,7 +305,6 @@
                                     <li>{{ $line }}</li>
                                 @endforeach
                             </ul>
-                            <a href="#enroll" class="btn-main mt-3 d-block text-center" style="font-size:.88rem;padding:10px 20px;">Записаться</a>
                         </div>
                     </div>
                 </div>
