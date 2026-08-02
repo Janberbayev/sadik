@@ -17,7 +17,7 @@ class GalleryItemUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:10240'],
             'caption' => ['nullable', 'string', 'max:500'],
         ];
     }

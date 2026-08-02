@@ -244,7 +244,7 @@ class DashboardDocumentsController extends Controller
     {
         $validated = $request->validate([
             'file_title' => ['required', 'string', 'max:255'],
-            'file' => ['required', 'file', 'max:15360', 'mimes:pdf,jpeg,jpg,png,gif,webp'],
+            'file' => ['required', 'file', 'max:20480', 'mimes:pdf,jpeg,jpg,png,gif,webp'],
         ], [
             'file_title.required' => 'Укажите название файла.',
             'file.required' => 'Выберите файл документа.',

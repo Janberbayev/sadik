@@ -19,8 +19,8 @@ class SiteDocumentStoreRequest extends FormRequest
         return [
             'link_root' => ['nullable', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
-            /** PDF и распространённые изображения (до 15 МБ). */
-            'file' => ['required', 'file', 'max:15360', 'mimes:pdf,jpeg,jpg,png,gif,webp'],
+            /** PDF и распространённые изображения (до 20 МБ). */
+            'file' => ['required', 'file', 'max:20480', 'mimes:pdf,jpeg,jpg,png,gif,webp'],
         ];
     }
 

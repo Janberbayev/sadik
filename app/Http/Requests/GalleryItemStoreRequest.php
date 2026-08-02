@@ -21,7 +21,7 @@ class GalleryItemStoreRequest extends FormRequest
     {
         return [
             'images' => ['required', 'array', 'min:1', 'max:'.self::MAX_FILES_PER_UPLOAD],
-            'images.*' => ['file', 'image', 'max:5120'],
+            'images.*' => ['file', 'image', 'max:10240'],
             'caption' => ['nullable', 'string', 'max:500'],
         ];
     }
