@@ -120,8 +120,8 @@
         <div class="row justify-content-center g-3 mt-5">
             <div class="col-6 col-md-3 text-center">
                 <div class="stat-pill mx-auto">
-                    <span class="stat-num" style="color:var(--sun-dark)">12+</span>
-                    <span class="stat-label">лет работы</span>
+                    <span class="stat-num" style="color:var(--sun-dark)">с 2018 г.</span>
+                    <span class="stat-label">Опыт работы</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 text-center">
@@ -157,7 +157,7 @@
                         <div class="d-flex align-items-center gap-2 mb-1">
                             <span class="emoji">🏆</span>
                             <div>
-                                <div class="label">Лучший сад 2024</div>
+                                <div class="label">Топ 10</div>
                                 <div class="val">Рейтинг города</div>
                             </div>
                         </div>
