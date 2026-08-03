@@ -114,14 +114,32 @@
         .navbar-lang-switch-inner {
             border: 0 !important;
             box-shadow: none !important;
-            background: transparent;
+            background: rgba(30, 27, 46, .06);
+            gap: 0;
+            border-radius: 999px;
+            padding: 2px;
+            overflow: hidden;
         }
         .navbar-lang-switch-inner .navbar-lang-link {
-            transition: transform .15s, box-shadow .15s;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            letter-spacing: .03em;
+            line-height: 1;
+            padding: 0.35rem 0.55rem !important;
+            border: 0 !important;
+            border-radius: 999px !important;
+            text-decoration: none;
+            margin: 0 !important;
+            transition: background .15s, color .15s, opacity .15s;
         }
         .navbar-lang-switch-inner .navbar-lang-link:not(.navbar-lang-link-active-ru):not(.navbar-lang-link-active-kk) {
             color: var(--dark) !important;
-            opacity: 0.78;
+            opacity: 0.7;
+            background: transparent !important;
+        }
+        .navbar-lang-switch-inner .navbar-lang-link:hover {
+            opacity: 1;
         }
         .navbar-lang-link-active-ru {
             background: var(--sky-dark) !important;

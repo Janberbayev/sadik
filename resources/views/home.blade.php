@@ -120,26 +120,26 @@
         <div class="row justify-content-center g-3 mt-5">
             <div class="col-6 col-md-3 text-center">
                 <div class="stat-pill mx-auto">
-                    <span class="stat-num" style="color:var(--sun-dark)">с 2018 г.</span>
-                    <span class="stat-label">Опыт работы</span>
+                    <span class="stat-num" style="color:var(--sun-dark)">{{ __('starts') }}</span>
+                    <span class="stat-label">{{ __('experience') }}</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 text-center">
                 <div class="stat-pill mx-auto">
-                    <span class="stat-num" style="color:var(--sky)">320</span>
-                    <span class="stat-label">счастливых детей</span>
+                    <span class="stat-num" style="color:var(--sky)">500+</span>
+                    <span class="stat-label">{{ __('kids') }}</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 text-center">
                 <div class="stat-pill mx-auto">
                     <span class="stat-num" style="color:var(--grass-dark)">28</span>
-                    <span class="stat-label">педагогов</span>
+                    <span class="stat-label">{{ __('teacher') }}</span>
                 </div>
             </div>
             <div class="col-6 col-md-3 text-center">
                 <div class="stat-pill mx-auto">
                     <span class="stat-num" style="color:var(--coral)">4.9</span>
-                    <span class="stat-label">рейтинг родителей ⭐</span>
+                    <span class="stat-label">{{ __('rank') }} ⭐</span>
                 </div>
             </div>
         </div>
@@ -158,14 +158,14 @@
                             <span class="emoji">🏆</span>
                             <div>
                                 <div class="label">Топ 10</div>
-                                <div class="val">Рейтинг города</div>
+                                <div class="val">{{ __('rank_city') }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
-                <p class="section-eyebrow">О нас</p>
+                <p class="section-eyebrow">{{ __('nav_about') }}</p>
                 <h2 class="section-title">{!! nl2br(e($contactsForHome['about_title'])) !!}</h2>
                 <p style="color:var(--body-text);line-height:1.75;margin-bottom:1.5rem;">
                     {!! nl2br(e($contactsForHome['about_text'])) !!}
@@ -175,8 +175,8 @@
                         <div class="d-flex gap-3 align-items-start">
                             <div style="width:44px;height:44px;border-radius:14px;background:#DBEEFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">🌱</div>
                             <div>
-                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">Развивающая среда</div>
-                                <div style="font-size:.85rem;color:var(--muted);">Оборудованные зоны для творчества и игры</div>
+                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">{{ __('about_us_1') }}</div>
+                                <div style="font-size:.85rem;color:var(--muted);">{{ __('about_us_1_1') }}</div>
                             </div>
                         </div>
                     </div>
@@ -184,8 +184,8 @@
                         <div class="d-flex gap-3 align-items-start">
                             <div style="width:44px;height:44px;border-radius:14px;background:#FFF3CC;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">🍎</div>
                             <div>
-                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">Здоровое питание</div>
-                                <div style="font-size:.85rem;color:var(--muted);">Сбалансированное меню от нашего шеф-повара</div>
+                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">{{ __('about_us_2') }}</div>
+                                <div style="font-size:.85rem;color:var(--muted);">{{ __('about_us_2_1') }}</div>
                             </div>
                         </div>
                     </div>
@@ -193,8 +193,8 @@
                         <div class="d-flex gap-3 align-items-start">
                             <div style="width:44px;height:44px;border-radius:14px;background:#DCFAE8;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">🔒</div>
                             <div>
-                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">Безопасность</div>
-                                <div style="font-size:.85rem;color:var(--muted);">Видеонаблюдение и контроль доступа 24/7</div>
+                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">{{ __('about_us_3') }}</div>
+                                <div style="font-size:.85rem;color:var(--muted);">{{ __('about_us_3_1') }}</div>
                             </div>
                         </div>
                     </div>
@@ -202,8 +202,8 @@
                         <div class="d-flex gap-3 align-items-start">
                             <div style="width:44px;height:44px;border-radius:14px;background:#EDE9FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;">📱</div>
                             <div>
-                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">Связь с родителями</div>
-                                <div style="font-size:.85rem;color:var(--muted);">Ежедневные фото и отчёты в приложении</div>
+                                <div style="font-weight:800;font-size:.95rem;margin-bottom:2px;">{{ __('about_us_4') }}</div>
+                                <div style="font-size:.85rem;color:var(--muted);">{{ __('about_us_4_1') }}</div>
                             </div>
                         </div>
                     </div>

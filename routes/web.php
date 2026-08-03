@@ -4,10 +4,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDocumentsController;
 use App\Http\Controllers\DocumentsPageController;
 use App\Http\Controllers\GalleryItemController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProgramGroupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteDocumentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Middleware\SetLocale;
 use App\Models\GalleryItem;
 use App\Models\ProgramGroup;
 use App\Models\SiteContact;
@@ -23,9 +25,21 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/locale/{locale}', [LocaleController::class, 'switch'])
+    ->whereIn('locale', SetLocale::SUPPORTED)
+    ->name('locale.switch');
+
 // Старые ссылки с языковым префиксом
-Route::redirect('/ru', '/');
-Route::redirect('/kk', '/');
+Route::get('/ru', function () {
+    session(['locale' => 'ru']);
+
+    return redirect('/');
+});
+Route::get('/kk', function () {
+    session(['locale' => 'kk']);
+
+    return redirect('/');
+});
 
 Route::get('/documents', [DocumentsPageController::class, 'index'])->name('documents.index');
 Route::post('/documents', [DocumentsPageController::class, 'storeTitle'])

@@ -172,7 +172,7 @@
     // Закрыть мобильное меню после перехода по ссылке меню
     const navMenuEl = document.getElementById('navMenu');
     if (navMenuEl && typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
-        navMenuEl.querySelectorAll('a.nav-link, a.btn-enroll').forEach(function (a) {
+        navMenuEl.querySelectorAll('a.nav-link, a.btn-enroll, a.navbar-lang-link').forEach(function (a) {
             a.addEventListener('click', function () {
                 if (!navMenuEl.classList.contains('show')) return;
                 bootstrap.Collapse.getOrCreateInstance(navMenuEl).hide();

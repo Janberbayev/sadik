@@ -1,11 +1,12 @@
 <?php
 
 if (! function_exists('public_locale')) {
-    /** Язык сайта (фиксированно русский). */
+    /** Текущий язык публичного сайта (ru|kk). */
     function public_locale(): string
     {
-        /** @phpstan-ignore-next-line */
-        return config('app.locale', 'ru');
+        $locale = app()->getLocale();
+
+        return in_array($locale, ['ru', 'kk'], true) ? $locale : 'ru';
     }
 }
 
