@@ -388,12 +388,12 @@
             <div class="col-md-6 col-lg-4">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Наш сын ходит в «Солнышко» уже два года. Каждое утро он сам просится в садик — это лучший показатель! Педагоги внимательные, атмосфера тёплая.</p>
+                    <p class="testimonial-text">{{ __('otzyv_1.1') }}</p>
                     <div class="testimonial-author">
                         <div class="author-avatar" style="background:#DBEEFF;color:#185FA5;">АК</div>
                         <div>
                             <div class="author-name">Анна Кузнецова</div>
-                            <div class="author-sub">Мама Миши, 4 года</div>
+                            <div class="author-sub">{{ __('otzyv_1.1_0') }}</div>
                         </div>
                     </div>
                 </div>
@@ -401,12 +401,12 @@
             <div class="col-md-6 col-lg-4">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Дочь выучила английский алфавит за месяц! Очень нравятся утренние занятия по математике — всё через игры, ребёнок не замечает, как учится.</p>
+                    <p class="testimonial-text">{{ __('otzyv_2.1') }}</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar" style="background:#DCFAE8;color:#0F6E56;">ДМ</div>
+                        <div class="author-avatar" style="background:#DCFAE8;color:#0F6E56;">АГ</div>
                         <div>
-                            <div class="author-name">Дмитрий Морозов</div>
-                            <div class="author-sub">Папа Сони, 5 лет</div>
+                            <div class="author-name">Абитов Гани</div>
+                            <div class="author-sub">{{ __('otzyv_2.1_0') }}</div>
                         </div>
                     </div>
                 </div>
@@ -414,12 +414,12 @@
             <div class="col-md-6 col-lg-4">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Переехали из другого города и очень боялись, как ребёнок привыкнет. Психолог садика помог с адаптацией за неделю. Мы в восторге!</p>
+                    <p class="testimonial-text">{{ __('otzyv_3.1') }}</p>
                     <div class="testimonial-author">
                         <div class="author-avatar" style="background:#FFE9E6;color:#993C1D;">ЕС</div>
                         <div>
                             <div class="author-name">Екатерина Соколова</div>
-                            <div class="author-sub">Мама Артёма, 3 года</div>
+                            <div class="author-sub">{{ __('otzyv_3.1_0') }}</div>
                         </div>
                     </div>
                 </div>
