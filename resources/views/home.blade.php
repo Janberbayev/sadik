@@ -468,15 +468,51 @@
             {{ __('cta_2') }}
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="tel:+77001234567" class="btn-cta-white">
+            <button type="button" class="btn-cta-white" data-bs-toggle="modal" data-bs-target="#ctaPhonesModal">
                 <i class="bi bi-telephone-fill me-2"></i>{{ __('cta_3') }}
-            </a>
+            </button>
             <a href="https://wa.me/77018809196" class="btn-cta-white" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);">
                 <i class="bi bi-whatsapp me-2"></i>WhatsApp
             </a>
         </div>
     </div>
 </section>
+
+@php
+    $ctaPhone = $contactsForHome['phone'] ?? '';
+    $ctaPhone2 = $contactsForHome['phone_2'] ?? '';
+@endphp
+<div class="modal fade" id="ctaPhonesModal" tabindex="-1" aria-labelledby="ctaPhonesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow" style="border-radius: 20px;">
+            <div class="modal-header border-0 pb-0">
+                <h2 class="modal-title fs-5 fw-bold" id="ctaPhonesModalLabel" style="font-family: 'Nunito', sans-serif; color: var(--dark);">
+                    {{ __('cta_phones_title') }}
+                </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('cta_phones_close') }}"></button>
+            </div>
+            <div class="modal-body pt-3 pb-4">
+                <div class="d-flex flex-column gap-3">
+                    @if ($ctaPhone !== '')
+                        <div class="cta-phone-link">
+                            <span class="cta-phone-icon">📞</span>
+                            <span>{{ $ctaPhone }}</span>
+                        </div>
+                    @endif
+                    @if ($ctaPhone2 !== '')
+                        <div class="cta-phone-link">
+                            <span class="cta-phone-icon">📞</span>
+                            <span>{{ $ctaPhone2 }}</span>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">{{ __('cta_phones_close') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- CONTACTS -->
 <section class="contacts-section" id="contacts">

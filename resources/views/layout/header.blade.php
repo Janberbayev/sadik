@@ -699,6 +699,26 @@
             box-shadow: 0 7px 0 rgba(0,0,0,0.15);
             color: var(--sky-dark);
         }
+        button.btn-cta-white {
+            cursor: pointer;
+        }
+        .cta-phone-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: #FFFDF8;
+            border: 2px solid var(--card-border);
+            color: var(--dark);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .cta-phone-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
 
         /* ── CONTACTS ── */
         .contacts-section {
