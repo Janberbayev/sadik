@@ -14,6 +14,10 @@
     <div class="alert alert-success mb-3" role="alert">Файл удалён.</div>
 @endif
 
+@if (session('status') === 'folder-deleted')
+    <div class="alert alert-success mb-3" role="alert">Папка удалена.</div>
+@endif
+
 @if ($document->link_root)
     <div class="mb-3">
         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#renameFolderModal{{ $document->id }}">
@@ -36,9 +40,12 @@
                                 <span class="small text-muted">Открыть папку</span>
                             </span>
                         </a>
-                        <div class="flex-shrink-0">
+                        <div class="d-flex flex-shrink-0 gap-2">
                             <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#renameFolderModal{{ $folder->id }}">
                                 Переименовать
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteFolderModal{{ $folder->id }}">
+                                Удалить
                             </button>
                         </div>
                     </li>
@@ -207,6 +214,31 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
                         <button type="submit" class="btn btn-primary">Переименовать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteFolderModal{{ $folder->id }}" tabindex="-1" aria-labelledby="deleteFolderModalLabel{{ $folder->id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="{{ route('dashboard.docs.folder.destroy', $folder) }}">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="deleteFolderModalLabel{{ $folder->id }}">Удалить папку</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0">
+                            Удалить папку «{{ $folder->folderDisplayName() }}» вместе со всеми вложенными папками и файлами?
+                            Это действие нельзя отменить.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-danger">Удалить</button>
                     </div>
                 </form>
             </div>

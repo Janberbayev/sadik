@@ -240,6 +240,48 @@ class DashboardDocumentsController extends Controller
             ->with('status', 'folder-renamed');
     }
 
+    /** Удалить папку и все вложенные записи (файлы с диска тоже). */
+    public function destroyFolder(SiteDocument $site_document): RedirectResponse
+    {
+        if (! $site_document->link_root) {
+            return back()->withErrors(['folder' => 'Эту страницу нельзя удалить как папку.']);
+        }
+
+        $folderPath = SiteDocument::normalizeLinkRoot($site_document->link_root);
+
+        if (! $folderPath) {
+            return back()->withErrors(['folder' => 'Не удалось определить путь папки.']);
+        }
+
+        $parent = $site_document->parentDocument();
+
+        $docs = SiteDocument::query()
+            ->where('title', $site_document->title)
+            ->where(function ($query) use ($folderPath) {
+                $query->where('link_root', $folderPath)
+                    ->orWhere('link_root', 'like', $folderPath.'/%');
+            })
+            ->get();
+
+        foreach ($docs as $doc) {
+            $path = $doc->path;
+
+            if (is_string($path) && $path !== '') {
+                Storage::disk('public')->delete($path);
+            }
+
+            $doc->delete();
+        }
+
+        $redirectUrl = $parent
+            ? $parent->dashboardPageUrl()
+            : route('dashboard.docs.index');
+
+        return redirect()
+            ->to($redirectUrl)
+            ->with('status', 'folder-deleted');
+    }
+
     public function storeFile(Request $request, SiteDocument $site_document): RedirectResponse
     {
         $validated = $request->validate([

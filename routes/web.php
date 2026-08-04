@@ -87,6 +87,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/docs/{site_document}/folder', [DashboardDocumentsController::class, 'folder'])->name('dashboard.docs.folder');
     Route::post('/dashboard/docs/{site_document}/folders', [DashboardDocumentsController::class, 'storeFolder'])->name('dashboard.docs.folders.store');
     Route::patch('/dashboard/docs/{site_document}/folder', [DashboardDocumentsController::class, 'renameFolder'])->name('dashboard.docs.folder.rename');
+    Route::delete('/dashboard/docs/{site_document}/folder', [DashboardDocumentsController::class, 'destroyFolder'])->name('dashboard.docs.folder.destroy');
     Route::post('/dashboard/docs/{site_document}/file', [DashboardDocumentsController::class, 'storeFile'])->name('dashboard.docs.file.store');
     Route::delete('/dashboard/docs/{site_document}/files/{file}', [DashboardDocumentsController::class, 'destroyFile'])->name('dashboard.docs.file.destroy');
 });
