@@ -217,50 +217,50 @@
 <section class="features-section">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow">Почему мы?</p>
-            <h2 class="section-title">Всё для гармоничного<br>развития вашего ребёнка</h2>
+            <p class="section-eyebrow">{{ __('why_we') }}</p>
+            <h2 class="section-title">{{ __('why_we_h1_1') }}<br>{{ __('why_we_h1_2') }}</h2>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-yellow">🎭</div>
-                    <h5>Творческие занятия</h5>
-                    <p>Рисование, лепка, театр и музыка. Развиваем воображение и мелкую моторику каждый день.</p>
+                    <h5>{{ __('why_we_p1') }}</h5>
+                    <p>{{ __('why_we_p1_1') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-blue">🌍</div>
-                    <h5>Иностранные языки</h5>
-                    <p>Английский язык с носителем с 3 лет. Игровые методики для лёгкого погружения в язык.</p>
+                    <h5>{{ __('why_we_p2') }}</h5>
+                    <p>{{ __('why_we_p2_1') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-green">🤸</div>
-                    <h5>Физическое развитие</h5>
-                    <p>Утренняя зарядка, спортивные игры, плавание. Здоровое тело — основа счастливого детства.</p>
+                    <h5>{{ __('why_we_p3') }}</h5>
+                    <p>{{ __('why_we_p3_1') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-coral">🧩</div>
-                    <h5>Логика и математика</h5>
-                    <p>STEM-подход через игры и конструкторы. Ранняя математика делает мышление гибким.</p>
+                    <h5>{{ __('why_we_p4') }}</h5>
+                    <p>{{ __('why_we_p4_1') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-purple">🧸</div>
-                    <h5>Психологическая поддержка</h5>
-                    <p>Детский психолог в штате. Помогаем каждому ребёнку адаптироваться и чувствовать себя уверенно.</p>
+                    <h5>{{ __('why_we_p5') }}</h5>
+                    <p>{{ __('why_we_p5_1') }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="feature-card">
                     <div class="feature-icon icon-teal">🌿</div>
-                    <h5>Прогулки на природе</h5>
-                    <p>Просторные зелёные площадки и огород. Учим детей любить и беречь природу.</p>
+                    <h5>{{ __('why_we_p6') }}</h5>
+                    <p>{{ __('why_we_p6_1') }}</p>
                 </div>
             </div>
         </div>
@@ -321,8 +321,8 @@
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow">Галерея</p>
-            <h2 class="section-title">Наша жизнь в садике</h2>
+            <p class="section-eyebrow">{{ __('gallery') }}</p>
+            <h2 class="section-title">{{ __('gallery_1') }}</h2>
         </div>
         <div class="row g-3 justify-content-center">
             @forelse ($galleryItems as $gi)
@@ -381,8 +381,8 @@
 <section class="testimonials-section">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow">Отзывы</p>
-            <h2 class="section-title">Родители о нас</h2>
+            <p class="section-eyebrow">{{ __('otzyv') }}</p>
+            <h2 class="section-title">{{ __('otzyv_1') }}</h2>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
@@ -432,9 +432,9 @@
 <section class="team-section" id="team">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow">Команда</p>
-            <h2 class="section-title">Наши педагоги</h2>
-            <p style="color:var(--muted);max-width:500px;margin:0 auto;font-size:.95rem;">Каждый из наших педагогов — специалист с профильным образованием и большой любовью к детям.</p>
+            <p class="section-eyebrow">{{ __('team') }}</p>
+            <h2 class="section-title">{{ __('team_1') }}</h2>
+            <p style="color:var(--muted);max-width:500px;margin:0 auto;font-size:.95rem;">{{ __('team_2') }}</p>
         </div>
         <div class="row g-4 justify-content-center">
             @forelse ($teachers as $t)
@@ -463,13 +463,13 @@
 <section class="cta-section" id="enroll">
     <div class="container text-center position-relative" style="z-index:1;">
         <div style="font-size:3.5rem;margin-bottom:1rem;">🌟</div>
-        <h2 class="section-title text-white mb-3">Готовы дать ребёнку<br>лучшее начало?</h2>
+        <h2 class="section-title text-white mb-3">{{ __('cta') }}<br>{{ __('cta_1') }}</h2>
         <p style="color:rgba(255,255,255,.85);font-size:1.05rem;max-width:480px;margin:0 auto 2rem;line-height:1.7;">
-            Запишитесь на бесплатную экскурсию по садику. Мы покажем все группы и ответим на любые вопросы.
+            {{ __('cta_2') }}
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
             <a href="tel:+77001234567" class="btn-cta-white">
-                <i class="bi bi-telephone-fill me-2"></i>Позвонить нам
+                <i class="bi bi-telephone-fill me-2"></i>{{ __('cta_3') }}
             </a>
             <a href="https://wa.me/77018809196" class="btn-cta-white" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);">
                 <i class="bi bi-whatsapp me-2"></i>WhatsApp
@@ -482,15 +482,15 @@
 <section class="contacts-section" id="contacts">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow">Контакты</p>
-            <h2 class="section-title">Как нас найти</h2>
+            <p class="section-eyebrow">{{ __('nav_contacts') }}</p>
+            <h2 class="section-title">{{ __('contacts') }}</h2>
         </div>
         <div class="row g-4 mb-5">
             <div class="col-sm-6 col-lg-3">
                 <div class="contact-card">
                     <div class="contact-icon icon-blue" style="font-size:1.4rem;">📍</div>
                     <div>
-                        <div class="contact-label">Адрес</div>
+                        <div class="contact-label">{{ __('address') }}</div>
                         <div class="contact-val">{!! nl2br(e($contactsForHome['address'])) !!}</div>
                     </div>
                 </div>
@@ -508,7 +508,7 @@
                 <div class="contact-card">
                     <div class="contact-icon icon-yellow" style="font-size:1.4rem;">⏰</div>
                     <div>
-                        <div class="contact-label">Режим работы</div>
+                        <div class="contact-label">{{ __('terms') }}</div>
                         <div class="contact-val">{!! nl2br(e($contactsForHome['working_hours'])) !!}</div>
                     </div>
                 </div>
