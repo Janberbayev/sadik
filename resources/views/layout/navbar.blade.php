@@ -55,15 +55,15 @@
             </ul>
             <div class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-lg-end gap-2 flex-shrink-0">
                 <div class="btn-group navbar-lang-switch-inner" role="group" aria-label="{{ __('nav_lang_toggle') }}">
-                    <a href="{{ route('locale.switch', ['locale' => 'ru']) }}"
-                       class="btn btn-sm navbar-lang-link @if(public_locale() === 'ru') navbar-lang-link-active-ru @endif"
-                       @if(public_locale() === 'ru') aria-current="true" @endif>
-                        {{ __('lang_ru') }}
-                    </a>
                     <a href="{{ route('locale.switch', ['locale' => 'kk']) }}"
                        class="btn btn-sm navbar-lang-link @if(public_locale() === 'kk') navbar-lang-link-active-kk @endif"
                        @if(public_locale() === 'kk') aria-current="true" @endif>
                         {{ __('lang_kk') }}
+                    </a>
+                    <a href="{{ route('locale.switch', ['locale' => 'ru']) }}"
+                       class="btn btn-sm navbar-lang-link @if(public_locale() === 'ru') navbar-lang-link-active-ru @endif"
+                       @if(public_locale() === 'ru') aria-current="true" @endif>
+                        {{ __('lang_ru') }}
                     </a>
                 </div>
                 <a href="{{ locale_route('home') }}#enroll" class="btn-enroll">{{ __('nav_enroll') }}</a>

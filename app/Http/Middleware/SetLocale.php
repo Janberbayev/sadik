@@ -17,10 +17,10 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->session()->get('locale', config('app.locale', 'ru'));
+        $locale = $request->session()->get('locale', config('app.locale', 'kk'));
 
         if (! in_array($locale, self::SUPPORTED, true)) {
-            $locale = 'ru';
+            $locale = 'kk';
         }
 
         App::setLocale($locale);

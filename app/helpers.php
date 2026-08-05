@@ -6,7 +6,7 @@ if (! function_exists('public_locale')) {
     {
         $locale = app()->getLocale();
 
-        return in_array($locale, ['ru', 'kk'], true) ? $locale : 'ru';
+        return in_array($locale, ['ru', 'kk'], true) ? $locale : 'kk';
     }
 }
 

@@ -78,8 +78,8 @@ return [
     |
     */
 
-    /** Язык сайта — русский. */
-    'locale' => env('APP_LOCALE', 'ru'),
+    /** Язык сайта по умолчанию — казахский. */
+    'locale' => env('APP_LOCALE', 'kk'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'ru'),
 
