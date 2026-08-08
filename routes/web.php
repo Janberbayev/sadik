@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDocumentsController;
+use App\Http\Controllers\DashboardSecurityController;
+use App\Http\Controllers\DashboardUsersController;
+use App\Http\Controllers\DocumentsAccessController;
 use App\Http\Controllers\DocumentsPageController;
 use App\Http\Controllers\GalleryItemController;
+use App\Http\Middleware\EnsureDocumentsUnlocked;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProgramGroupController;
 use App\Http\Controllers\ProfileController;
@@ -41,12 +45,28 @@ Route::get('/kk', function () {
     return redirect('/');
 });
 
-Route::get('/documents', [DocumentsPageController::class, 'index'])->name('documents.index');
+Route::get('/gallery', function () {
+    return view('gallery', [
+        'galleryItems' => GalleryItem::query()->ordered()->get(),
+    ]);
+})->name('gallery.index');
+
+// Разблокировка раздела «Документы» логином и паролем.
+Route::post('/documents/unlock', [DocumentsAccessController::class, 'unlock'])->name('documents.unlock');
+Route::post('/documents/lock', [DocumentsAccessController::class, 'lock'])->name('documents.lock');
+
+Route::get('/documents', [DocumentsPageController::class, 'index'])
+    ->middleware(EnsureDocumentsUnlocked::class)
+    ->name('documents.index');
 Route::post('/documents', [DocumentsPageController::class, 'storeTitle'])
     ->middleware('auth')
     ->name('documents.titles.store');
-Route::get('/documents/{site_document}', [DocumentsPageController::class, 'show'])->name('documents.show');
-Route::get('/documents/{site_document}/folder', [DocumentsPageController::class, 'folder'])->name('documents.folder');
+Route::get('/documents/{site_document}', [DocumentsPageController::class, 'show'])
+    ->middleware(EnsureDocumentsUnlocked::class)
+    ->name('documents.show');
+Route::get('/documents/{site_document}/folder', [DocumentsPageController::class, 'folder'])
+    ->middleware(EnsureDocumentsUnlocked::class)
+    ->name('documents.folder');
 Route::post('/documents/{site_document}/folders', [DocumentsPageController::class, 'storeFolder'])
     ->middleware('auth')
     ->name('documents.folders.store');
@@ -76,6 +96,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/dashboard/gallery-items/{gallery_item}', [GalleryItemController::class, 'update'])->name('dashboard.gallery-items.update');
     Route::delete('/dashboard/gallery-items/{gallery_item}', [GalleryItemController::class, 'destroy'])->name('dashboard.gallery-items.destroy');
     Route::delete('/dashboard/gallery-items', [GalleryItemController::class, 'bulkDestroy'])->name('dashboard.gallery-items.bulk-destroy');
+
+    // Защита раздела «Документы»: логин и пароль для посетителей.
+    Route::get('/dashboard/security', [DashboardSecurityController::class, 'edit'])->name('dashboard.security.edit');
+    Route::patch('/dashboard/security', [DashboardSecurityController::class, 'update'])->name('dashboard.security.update');
+
+    // Заявки на регистрацию: одобрение/отклонение аккаунтов.
+    Route::get('/dashboard/users', [DashboardUsersController::class, 'index'])->name('dashboard.users.index');
+    Route::patch('/dashboard/users/{user}/approve', [DashboardUsersController::class, 'approve'])->name('dashboard.users.approve');
+    Route::patch('/dashboard/users/{user}/reject', [DashboardUsersController::class, 'reject'])->name('dashboard.users.reject');
+    Route::delete('/dashboard/users/{user}', [DashboardUsersController::class, 'destroy'])->name('dashboard.users.destroy');
 
     Route::post('/dashboard/documents', [SiteDocumentController::class, 'store'])->name('dashboard.documents.store');
     Route::delete('/dashboard/documents/{site_document}', [SiteDocumentController::class, 'destroy'])->name('dashboard.documents.destroy');
