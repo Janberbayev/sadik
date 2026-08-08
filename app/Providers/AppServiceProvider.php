@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\SiteContact;
 use App\Models\SiteDocument;
+use App\Models\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,15 +23,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['layout.navbar', 'layouts.dashboard-navigation'], function ($view) {
-            $view->with(
-                'navDocuments',
-                SiteDocument::query()
+        View::composer('layouts.dashboard-navigation', function ($view) {
+            $view->with([
+                'navDocuments' => SiteDocument::query()
                     ->ordered()
                     ->get(['id', 'title', 'link_root', 'path'])
                     ->unique('title')
-                    ->values()
-            );
+                    ->values(),
+                'pendingUsersCount' => User::query()
+                    ->where('status', User::STATUS_PENDING)
+                    ->count(),
+            ]);
         });
 
         View::composer('layout.footer', function ($view) {

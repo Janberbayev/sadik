@@ -14,6 +14,12 @@
 <!-- FOOTER -->
 @include('layout.footer')
 
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="galleryLightbox" role="dialog" aria-modal="true">
+    <button type="button" class="lightbox-close" id="galleryLightboxClose" aria-label="{{ __('cta_phones_close') }}">&times;</button>
+    <img src="" alt="" id="galleryLightboxImg">
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     (function(){
@@ -180,12 +186,47 @@
         });
     }
 
-    document.querySelectorAll('.feature-card, .program-card, .testimonial-card, .teacher-card, .stat-pill').forEach(el => {
+    document.querySelectorAll('.feature-card, .program-card, .testimonial-card, .teacher-card, .tl-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(24px)';
         el.style.transition = 'opacity .5s ease, transform .5s ease';
         observer.observe(el);
     });
+</script>
+<script>
+    // Галерея: открытие фото в увеличенном виде (lightbox)
+    (function () {
+        const overlay = document.getElementById('galleryLightbox');
+        const overlayImg = document.getElementById('galleryLightboxImg');
+        const closeBtn = document.getElementById('galleryLightboxClose');
+        if (!overlay || !overlayImg) return;
+
+        function open(src, alt) {
+            overlayImg.setAttribute('src', src);
+            overlayImg.setAttribute('alt', alt || '');
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function close() {
+            overlay.classList.remove('open');
+            overlayImg.setAttribute('src', '');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('img.gallery-photo').forEach(function (img) {
+            img.addEventListener('click', function () {
+                open(img.getAttribute('src'), img.getAttribute('alt'));
+            });
+        });
+
+        closeBtn && closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) close();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+        });
+    })();
 </script>
 </body>
 </html>

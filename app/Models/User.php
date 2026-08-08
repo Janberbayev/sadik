@@ -22,7 +22,30 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
     ];
+
+    public const STATUS_PENDING = 'pending';
+
+    public const STATUS_APPROVED = 'approved';
+
+    public const STATUS_REJECTED = 'rejected';
+
+    /** Одобренные пользователи имеют полный доступ к админ-панели. */
+    public function isApproved(): bool
+    {
+        return $this->status === self::STATUS_APPROVED;
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === self::STATUS_PENDING;
+    }
+
+    public function isRejected(): bool
+    {
+        return $this->status === self::STATUS_REJECTED;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -50,6 +50,21 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        // Аккаунт должен быть одобрен администратором.
+        $user = Auth::user();
+
+        if ($user && ! $user->isApproved()) {
+            $message = $user->isRejected()
+                ? 'Ваша заявка отклонена администратором.'
+                : 'Ваш аккаунт ещё на проверке. Дождитесь одобрения администратором.';
+
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => $message,
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

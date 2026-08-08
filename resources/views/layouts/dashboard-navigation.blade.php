@@ -42,6 +42,15 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-contacts">Контакты</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 rounded px-lg-2 @if(request()->routeIs('dashboard.users.*')) active fw-semibold @endif" href="{{ route('dashboard.users.index') }}">
+                            Заявки
+                            @if (($pendingUsersCount ?? 0) > 0)
+                                <span class="badge text-bg-danger ms-1">{{ $pendingUsersCount }}</span>
+                            @endif
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2 @if(request()->routeIs('dashboard.security.*')) active fw-semibold @endif" href="{{ route('dashboard.security.edit') }}">Защита</a></li>
                 </ul>
             </div>
             <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 mt-lg-0 flex-shrink-0">
