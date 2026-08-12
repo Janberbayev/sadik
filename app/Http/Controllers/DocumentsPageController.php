@@ -11,10 +11,12 @@ class DocumentsPageController extends Controller
 {
     public function index(): View
     {
+        // Представитель документа — корневая запись (link_root = null), не зависит от sort_order.
         $documents = SiteDocument::query()
             ->ordered()
             ->get()
-            ->unique('title')
+            ->groupBy('title')
+            ->map(fn ($group) => $group->firstWhere('link_root', null) ?? $group->first())
             ->values();
 
         return view('documents', [
@@ -60,8 +62,8 @@ class DocumentsPageController extends Controller
     {
         return view('documents.show', [
             'document' => $site_document,
-            'folders' => $site_document->childFolders(),
-            'files' => $site_document->folderFiles(),
+            'folders' => $site_document->childFolders('manual'),
+            'files' => $site_document->folderFiles('manual'),
         ]);
     }
 
@@ -77,8 +79,8 @@ class DocumentsPageController extends Controller
         return view('documents.folder', [
             'document' => $site_document,
             'parent' => $parent,
-            'folders' => $site_document->childFolders(),
-            'files' => $site_document->folderFiles(),
+            'folders' => $site_document->childFolders('manual'),
+            'files' => $site_document->folderFiles('manual'),
         ]);
     }
 

@@ -50,6 +50,8 @@
         'document' => $document,
         'folders' => $folders,
         'files' => $files,
+        'sort' => $sort,
+        'moveTree' => $moveTree,
     ])
 
     @if ($errors->has('title'))

@@ -28,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
                 'navDocuments' => SiteDocument::query()
                     ->ordered()
                     ->get(['id', 'title', 'link_root', 'path'])
-                    ->unique('title')
+                    ->groupBy('title')
+                    ->map(fn ($group) => $group->firstWhere('link_root', null) ?? $group->first())
                     ->values(),
                 'pendingUsersCount' => User::query()
                     ->where('status', User::STATUS_PENDING)

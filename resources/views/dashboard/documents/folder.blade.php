@@ -15,5 +15,7 @@
         'document' => $document,
         'folders' => $folders,
         'files' => $files,
+        'sort' => $sort,
+        'moveTree' => $moveTree,
     ])
 </x-dashboard-layout>
