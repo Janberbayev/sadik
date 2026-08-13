@@ -415,7 +415,7 @@ Z"/>
                 <div class="contact-card">
                     <div class="contact-icon cbub-orange"><img src="{{ asset('images/ic-address.png') }}" alt="" width="42" height="42"></div>
                     <div class="contact-label">{{ __('address') }}</div>
-                    <div class="contact-val">{!! nl2br(e($contactsForHome['address'])) !!}</div>
+                    <div class="contact-val">{!! nl2br(e(__('address_value'))) !!}</div>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">
@@ -429,7 +429,7 @@ Z"/>
                 <div class="contact-card">
                     <div class="contact-icon cbub-yellow"><img src="{{ asset('images/ic-clock.png') }}" alt="" width="42" height="42"></div>
                     <div class="contact-label">{{ __('terms') }}</div>
-                    <div class="contact-val">{!! nl2br(e($contactsForHome['working_hours'])) !!}</div>
+                    <div class="contact-val">{!! nl2br(e(__('working_hours_value'))) !!}</div>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3">

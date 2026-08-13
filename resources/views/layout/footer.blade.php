@@ -42,7 +42,7 @@
                 <div class="footer-contact">
                     <p class="footer-contact-line">
                         <img class="footer-ic" src="{{ asset('images/ic-address.png') }}" alt="" width="18" height="18">
-                        <span>{!! nl2br(e($footerContacts['address'])) !!}</span>
+                        <span>{!! nl2br(e(__('address_value'))) !!}</span>
                     </p>
                     @if (! empty($footerContacts['phone']))
                         <a href="tel:{{ $footerPhoneTel }}"><img class="footer-ic" src="{{ asset('images/ic-phone.png') }}" alt="" width="18" height="18"><span>{{ $footerContacts['phone'] }}</span></a>
