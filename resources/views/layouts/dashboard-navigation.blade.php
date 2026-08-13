@@ -12,34 +12,11 @@
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-about">О нас</a></li>
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-programs">Программы</a></li>
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-program-groups">Группы</a></li>
-                    <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-teachers">Педагоги</a></li>
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-gallery">Галерея</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle py-2 rounded px-lg-2"
-                           href="#"
-                           id="dashboardDocumentsDropdown"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link py-2 rounded px-lg-2 @if(request()->routeIs('dashboard.docs.*')) active fw-semibold @endif" href="{{ route('dashboard.docs.index') }}">
                             Документы
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dashboardDocumentsDropdown">
-                            @forelse ($navDocuments as $doc)
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('dashboard.docs.show', $doc) }}">
-                                        {{ $doc->title }}
-                                    </a>
-                                </li>
-                            @empty
-                                <li><span class="dropdown-item-text text-muted">Пока нет документов</span></li>
-                            @endforelse
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('dashboard.docs.index') }}">
-                                    Все документы
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link py-2 rounded px-lg-2" href="{{ route('dashboard') }}#panel-contacts">Контакты</a></li>
                     <li class="nav-item">
