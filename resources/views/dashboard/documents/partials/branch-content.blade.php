@@ -353,14 +353,43 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="mb-0">
-                            Удалить папку «{{ $folder->folderDisplayName() }}» вместе со всеми вложенными папками и файлами?
-                            Это действие нельзя отменить.
-                        </p>
+                        @php $summary = $folder->folderContentsSummary(); @endphp
+                        @if ($summary['folders'] === 0 && $summary['files'] === 0)
+                            <p class="mb-0">
+                                Удалить пустую папку «<strong>{{ $folder->folderDisplayName() }}</strong>»?
+                            </p>
+                        @else
+                            <div class="alert alert-danger mb-3">
+                                <div class="fw-semibold mb-1">⚠️ Папка не пустая!</div>
+                                Внутри «<strong>{{ $folder->folderDisplayName() }}</strong>»:
+                                @if ($summary['folders'] > 0)
+                                    <span class="d-block">— вложенных папок: <strong>{{ $summary['folders'] }}</strong></span>
+                                @endif
+                                @if ($summary['files'] > 0)
+                                    <span class="d-block">— файлов: <strong>{{ $summary['files'] }}</strong></span>
+                                @endif
+                            </div>
+                            <p class="mb-2 small text-muted">Что будет удалено:</p>
+                            <ul class="list-group list-group-flush border rounded-3 mb-2" style="max-height: 30vh; overflow-y: auto;">
+                                @foreach ($folder->childFolders('name') as $sub)
+                                    <li class="list-group-item py-2 small">📂 {{ $sub->folderDisplayName() }}</li>
+                                @endforeach
+                                @foreach ($folder->folderFiles('name') as $subFile)
+                                    <li class="list-group-item py-2 small">📄 {{ $subFile->displayFileTitle() }}</li>
+                                @endforeach
+                            </ul>
+                            <p class="mb-0 fw-semibold text-danger">Все вложенные папки и файлы будут удалены безвозвратно.</p>
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-danger">
+                            @if ($summary['folders'] === 0 && $summary['files'] === 0)
+                                Удалить
+                            @else
+                                Всё равно удалить всё
+                            @endif
+                        </button>
                     </div>
                 </form>
             </div>

@@ -173,6 +173,26 @@ class DashboardDocumentsController extends Controller
             ->with('status', 'title-renamed');
     }
 
+    /** Удалить весь документ (корневую папку) со всеми папками и файлами. */
+    public function destroyTitle(SiteDocument $site_document): RedirectResponse
+    {
+        $docs = SiteDocument::query()
+            ->where('title', $site_document->title)
+            ->get();
+
+        foreach ($docs as $doc) {
+            if (filled($doc->path)) {
+                Storage::disk('public')->delete($doc->path);
+            }
+
+            $doc->delete();
+        }
+
+        return redirect()
+            ->route('dashboard.docs.index')
+            ->with('status', 'document-deleted');
+    }
+
     public function storeFolder(Request $request, SiteDocument $site_document): RedirectResponse
     {
         $validated = $request->validate([

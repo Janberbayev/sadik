@@ -9,6 +9,9 @@
             <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#renameTitleModal">
                 Переименовать
             </button>
+            <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTitleModal">
+                Удалить документ
+            </button>
             <a href="{{ route('dashboard.docs.index') }}" class="btn btn-outline-secondary btn-sm">← Все документы</a>
         </div>
     </div>
@@ -40,6 +43,60 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
                         <button type="submit" class="btn btn-primary">Переименовать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteTitleModal" tabindex="-1" aria-labelledby="deleteTitleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <form method="post" action="{{ route('dashboard.docs.title.destroy', $document) }}">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="deleteTitleModalLabel">Удалить документ</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        @php $docSummary = $document->documentContentsSummary(); @endphp
+                        @if ($docSummary['folders'] === 0 && $docSummary['files'] === 0)
+                            <p class="mb-0">
+                                Удалить пустой документ «<strong>{{ $document->title }}</strong>»?
+                            </p>
+                        @else
+                            <div class="alert alert-danger mb-3">
+                                <div class="fw-semibold mb-1">⚠️ Документ не пустой!</div>
+                                Внутри «<strong>{{ $document->title }}</strong>»:
+                                @if ($docSummary['folders'] > 0)
+                                    <span class="d-block">— папок: <strong>{{ $docSummary['folders'] }}</strong></span>
+                                @endif
+                                @if ($docSummary['files'] > 0)
+                                    <span class="d-block">— файлов: <strong>{{ $docSummary['files'] }}</strong></span>
+                                @endif
+                            </div>
+                            <p class="mb-2 small text-muted">В корне документа:</p>
+                            <ul class="list-group list-group-flush border rounded-3 mb-2" style="max-height: 30vh; overflow-y: auto;">
+                                @foreach ($folders as $sub)
+                                    <li class="list-group-item py-2 small">📂 {{ $sub->folderDisplayName() }}</li>
+                                @endforeach
+                                @foreach ($files as $subFile)
+                                    <li class="list-group-item py-2 small">📄 {{ $subFile->displayFileTitle() }}</li>
+                                @endforeach
+                            </ul>
+                            <p class="mb-0 fw-semibold text-danger">Весь документ со всеми папками и файлами будет удалён безвозвратно.</p>
+                        @endif
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-danger">
+                            @if ($docSummary['folders'] === 0 && $docSummary['files'] === 0)
+                                Удалить
+                            @else
+                                Всё равно удалить всё
+                            @endif
+                        </button>
                     </div>
                 </form>
             </div>

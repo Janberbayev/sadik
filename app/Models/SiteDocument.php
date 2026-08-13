@@ -149,6 +149,59 @@ class SiteDocument extends Model
     }
 
     /**
+     * Всё содержимое папки рекурсивно: сколько вложенных папок и файлов внутри.
+     *
+     * @return array{folders:int, files:int}
+     */
+    public function folderContentsSummary(): array
+    {
+        $path = self::normalizeLinkRoot($this->link_root);
+
+        if ($path === null) {
+            return ['folders' => 0, 'files' => 0];
+        }
+
+        $rows = static::query()
+            ->where('title', $this->title)
+            ->where(function ($query) use ($path) {
+                $query->where('link_root', $path)
+                    ->orWhere('link_root', 'like', $path.'/%');
+            })
+            ->get();
+
+        $files = $rows
+            ->filter(fn (self $row): bool => filled($row->path))
+            ->count();
+
+        $folders = $rows
+            ->map(fn (self $row): ?string => self::normalizeLinkRoot($row->link_root))
+            ->filter(fn (?string $lr): bool => $lr !== null && str_starts_with($lr, $path.'/'))
+            ->unique()
+            ->count();
+
+        return ['folders' => $folders, 'files' => $files];
+    }
+
+    /**
+     * Всё содержимое документа (по title): сколько всего папок и файлов.
+     *
+     * @return array{folders:int, files:int}
+     */
+    public function documentContentsSummary(): array
+    {
+        $rows = static::query()->where('title', $this->title)->get();
+
+        $files = $rows->filter(fn (self $row): bool => filled($row->path))->count();
+        $folders = $rows
+            ->map(fn (self $row): ?string => self::normalizeLinkRoot($row->link_root))
+            ->filter()
+            ->unique()
+            ->count();
+
+        return ['folders' => $folders, 'files' => $files];
+    }
+
+    /**
      * Сортировка списка папок/файлов по режиму: name (по умолчанию), date, manual.
      *
      * @param  SupportCollection<int, static>  $items

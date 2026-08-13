@@ -8,6 +8,10 @@
         <div class="alert alert-success mb-3" role="alert">Название документа создано.</div>
     @endif
 
+    @if (session('status') === 'document-deleted')
+        <div class="alert alert-success mb-3" role="alert">Документ удалён.</div>
+    @endif
+
     {{-- Панель сортировки --}}
     @if ($documents->isNotEmpty())
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
